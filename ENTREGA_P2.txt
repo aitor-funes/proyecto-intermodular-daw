@@ -1,0 +1,10 @@
+ENTREGA P2 — Gestor Financiero Inteligente
+
+Se entrega la documentación de planificación del proyecto. Las tecnologías y funcionalidades descritas son propuestas pendientes de validación; no se presentan como implementadas. No se consignan costes sin presupuestos comprobados.
+
+Documentos:
+- README actualizado: https://github.com/aitor-funes/proyecto-intermodular-daw/blob/main/README.md
+- Análisis de riesgos: https://github.com/aitor-funes/proyecto-intermodular-daw/blob/main/ANALISIS_RIESGOS.md
+- Estudio de viabilidad: https://github.com/aitor-funes/proyecto-intermodular-daw/blob/main/ESTUDIO_VIABILIDAD.md
+
+La propuesta delimita un MVP de registro manual de ingresos y gastos, resumen por periodos, metas de ahorro y pagos recurrentes. Las integraciones bancarias, IA y scraping se dejan para fases posteriores.
