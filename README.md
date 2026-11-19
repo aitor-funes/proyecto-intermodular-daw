@@ -1,59 +1,68 @@
-# Documentación del Proyecto Final: Gestor Financiero Inteligente
+# Gestor Financiero Inteligente
 
-## 1. Resumen Ejecutivo
+## Resumen y alcance
 
-El **Gestor Financiero Inteligente** es una WebApp integral diseñada para centralizar, optimizar y automatizar el control de las finanzas personales y profesionales. A través de un asistente de Inteligencia Artificial contextual, un sistema de calendario avanzado, gestión de suscripciones y automatización mediante *Web Scraping*, la plataforma se adapta dinámicamente al perfil y a los objetivos específicos de cada usuario.
+El **Gestor Financiero Inteligente** es una aplicación web propuesta para centralizar el control de las finanzas personales y profesionales. Pretende ayudar a registrar ingresos y gastos, consultar la evolución del presupuesto, organizar metas de ahorro y recordar pagos y vencimientos. Contempla perfiles de trabajador por cuenta ajena, autónomo y empresario, además de posibles ampliaciones con IA, notificaciones y consulta automatizada de información pública.
 
----
+> **Estado:** este repositorio contiene documentación de planificación. Las tecnologías y funcionalidades descritas son propuestas; no se afirma que estén implementadas.
 
-## 2. Sistema de Autenticación y Matriz de Roles
+### Perfiles considerados
 
-El inicio de sesión personaliza la experiencia de la aplicación según el perfil del usuario. La siguiente tabla resume las funciones desbloqueadas para cada tipo:
+| Perfil | Necesidades |
+| :--- | :--- |
+| Trabajador por cuenta ajena | Ingresos regulares, control de gastos y metas de ahorro. |
+| Autónomo | Ingresos variables, facturas y gastos profesionales; estimaciones orientativas. |
+| Empresario | Varias cuentas o categorías, flujo de caja y resultados por proyecto. |
 
-| Tipo de Usuario | Enfoque Principal | Funciones y Módulos Desbloqueados |
+El alcance contempla movimientos manuales, panel de resúmenes, ahorro, pagos recurrentes y calendario. IA, avisos y fuentes externas son ampliaciones. Recomendaciones concretas de inversión y cálculos fiscales oficiales quedan fuera del MVP.
+
+## Justificación técnica y arquitectura propuesta
+
+Se plantea una aplicación web adaptable con interfaz, lógica de negocio y base de datos relacional. La opción de referencia se validará antes de programar; no representa una implementación existente.
+
+| Capa | Propuesta pendiente de validar | Justificación |
 | :--- | :--- | :--- |
-| **Trabajador por Cuenta Ajena** | Control de nóminas y ahorro personal | • Registro de ingresos fijos<br>• Metas de ahorro y huchas<br>• Control básico de gastos hormiga |
-| **Autónomo (Freelance)** | Ingresos irregulares e impuestos | • Cálculo y previsión de trimestres / IVA<br>• Gestión de facturas y cobros pendientes<br>• Deducciones de gastos profesionales |
-| **Empresario** | Flujo de caja y cuentas corporativas | • Múltiples cuentas y centros de coste<br>• Análisis de rentabilidad de proyectos<br>• Optimización fiscal y flujos de caja avanzados |
+| Interfaz y servidor | Next.js con React y TypeScript | Pantallas y endpoints en un proyecto; tipado. |
+| Estilos | Tailwind CSS o CSS convencional | Interfaz adaptable, según conocimientos y necesidades. |
+| Persistencia | PostgreSQL | Relaciones entre usuarios, movimientos, categorías, metas y vencimientos. |
+| Acceso a datos | Prisma, opcional | Facilita el modelado y las consultas si encaja con el alcance. |
+| Autenticación | Auth.js u otra solución compatible | Proteger los datos y gestionar sesiones. |
+| Gráficos | Biblioteca React por seleccionar | Representar resúmenes definidos. |
+| IA y scraping | Opcionales, fuera del núcleo | Añaden dependencias, privacidad y mantenimiento. |
+| Control de versiones | Git y GitHub | Historial, respaldo y coordinación de cambios. |
 
----
+No se propone conexión bancaria en el MVP; los datos se introducirían manualmente. La elección final dependerá de una prueba técnica, competencias disponibles y requisitos de despliegue.
 
-## 3. Matriz de Objetivos y Comportamiento del Bot Financiero
+## Fases y dependencias
 
-El usuario define un objetivo principal al registrarse. El **Bot Financiero (IA)** adapta sus consejos, alertas y cálculos según la meta elegida:
-
-| Objetivo Seleccionado | Estrategia y Enfoque de la IA | Ejemplos de Intervención del Bot |
+| Fase | Actividades y resultado | Depende de |
 | :--- | :--- | :--- |
-| **Ahorrar** | Maximizar el remanente mensual y crear fondos de emergencia. | *"Detecto un gasto extra del 15% en ocio; si lo reduces, alcanzarás tu hucha de vacaciones 2 semanas antes."* |
-| **Invertir** | Rentabilizar el capital disponible y sugerir productos financieros. | *"Tienes 1,200€ ociosos en cuenta corriente. Considera mover el 50% a un fondo indexado de bajo riesgo."* |
-| **Reducir Gastos** | Auditar suscripciones y eliminar fugas de dinero hormiga. | *"Atención: tu suscripción a la plataforma X subió un 10% este mes y no la has usado en 45 días."* |
+| 1. Análisis | Requisitos, perfiles, casos de uso y criterios de aceptación. | Ninguna |
+| 2. Validación y diseño | Confirmar stack, prototipo, entidades y privacidad. | 1 |
+| 3. Preparación | Repositorio, entorno local, base de datos de desarrollo. | 2 |
+| 4. Datos y lógica | Usuarios, movimientos, categorías, metas y validaciones. | 3 |
+| 5. Interfaz MVP | Registro manual, panel, filtros, ahorro y pagos periódicos. | 3 y 4 |
+| 6. Revisión | Permisos, cálculos, errores y escenarios funcionales. | 4 y 5 |
+| 7. Documentación | Guía, limitaciones y material de demostración. | 6 |
+| 8. Ampliaciones | Calendario avanzado, avisos, IA o fuentes externas. | MVP estable |
 
----
+Si el tiempo es limitado, se priorizarán movimientos manuales y resumen financiero, aplazando integraciones.
 
-## 4. Módulos Principales de la WebApp
+## MVP propuesto
 
-### A. Panel de Control y Gestión Financiera
-* **Sueldos e Ingresos:** Registro centralizado de entradas.
-* **Gestión de Ahorros:** Visualización gráfica del progreso de metas.
-* **Gestión de Suscripciones:** Auditoría en tiempo real de servicios recurrentes para evitar cargos sorpresa o duplicados.
+Acceso de usuario si la prueba técnica lo confirma; alta, edición, consulta y clasificación manual de ingresos/gastos; saldo por periodo; metas de ahorro; pagos recurrentes manuales; validaciones básicas e interfaz adaptable.
 
-### B. Calendario + Agenda Inteligente
-* **Sistema de Notificaciones:** Alertas push y correos programados.
-* **Fechas Clave:** Sincronización automática de cobros de nóminas, vencimientos de suscripciones y plazos de impuestos.
-* **Anticipación:** Configuración de avisos personalizados (ej. *"Avisar 3 días antes de cobros imprevistos"*).
+Fuera del MVP: conexión bancaria, importación automática, fiscalidad oficial, recomendaciones concretas de inversión, scraping esencial, notificaciones externas e IA con datos personales. Las extensiones se estudiarán una vez estable el núcleo.
 
-### C. Sistema de Web Scraping
-* **Monitoreo de Mercado:** Rastreo automático de subidas de tarifas en servicios suscritos.
-* **Análisis Externo:** Extracción de datos sobre rentabilidades de cuentas de ahorro e inflación para ofrecer comparativas al usuario.
+## Recursos, logística y seguridad
 
----
+Se prevén ordenador, navegador, entorno de desarrollo compatible, Git/GitHub, herramientas de diseño y documentación, y base de datos de desarrollo. Se usarán datos ficticios. El tiempo se distribuirá entre análisis, implementación, revisión y documentación.
 
-## 5. Arquitectura Técnica Propuesta
+No se fija presupuesto ni se afirman costes comprobados. Alojamiento, dominio, base de datos gestionada o API de IA pueden generar costes según proveedor y uso; se comprobarán antes de contratar.
 
-| Capa Tecnológica | Tecnología Sugerida | Propósito Principal |
-| :--- | :--- | :--- |
-| **Frontend** | React.js / Next.js + Tailwind CSS | Interfaz de usuario responsiva, rápida y dinámica. |
-| **Backend** | Node.js (Express) o Python (FastAPI) | Lógica de negocio, pasarelas y procesamiento de APIs. |
-| **Base de Datos** | PostgreSQL / MongoDB | Almacenamiento seguro, encriptado y estructurado de datos financieros. |
-| **Módulo de IA** | API de LLM (ej. OpenAI / Anthropic) + Prompt Contextual | Razonamiento financiero y asesoramiento personalizado. |
-| **Web Scraping** | Python (BeautifulSoup / Selenium / Puppeteer) | Extracción automatizada de datos externos y precios. |
+El diseño deberá contemplar autenticación, autorización por usuario, validación, gestión segura de secretos y copias de seguridad según el entorno. Los cálculos serán explícitos y verificables. La IA, si se incorpora, no será la fuente de verdad para importes ni impuestos. Se revisarán privacidad y condiciones de terceros antes de usar datos reales.
+
+## Documentos relacionados
+
+- [Análisis de riesgos](ANALISIS_RIESGOS.md)
+- [Estudio de viabilidad](ESTUDIO_VIABILIDAD.md)
